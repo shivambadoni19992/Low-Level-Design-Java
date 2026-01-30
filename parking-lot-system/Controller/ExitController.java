@@ -1,22 +1,21 @@
 package Controller;
 
 import Service.ExitService;
-import Strategy.PricingStrtegy.HourlyRateStrategy;
-
+import Strategy.PaymentStrategy.PaymentStrategy;
 import Models.Receipt;
 import Models.Ticket;
 import Enums.PaymentType;
 
 public class ExitController {
 
-    ExitService exitService;
+    private final ExitService exitService;
 
-    public ExitController() {
-        this.exitService = new ExitService(new HourlyRateStrategy());
+    public ExitController(ExitService exitService) {
+        this.exitService = exitService;
     }
 
-    public Receipt exitVehicle(Ticket ticket, PaymentType paymentType) {
-        return exitService.exitVehicle(ticket, paymentType);
+    public Receipt exitVehicle(Ticket ticket, PaymentStrategy paymentStrategy) {
+        return exitService.exitVehicle(ticket, paymentStrategy);
     }
 
 }

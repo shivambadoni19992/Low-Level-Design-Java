@@ -9,10 +9,10 @@ import Service.EntryService;
 
 public class EntryController {
 
-    private EntryService entryService;
+    private final EntryService entryService;
 
-    public EntryController() {
-        this.entryService = new EntryService();
+    public EntryController(EntryService entryService) {
+        this.entryService = entryService;
     }
 
     public Ticket enterVehicle(Vehicle vehicle, List<ParkingFloor> parkingFloors) {

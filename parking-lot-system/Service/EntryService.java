@@ -7,20 +7,20 @@ import Models.ParkingSpot;
 import Models.Ticket;
 import Models.Vehicle.Vehicle;
 import Repository.EntryRepository;
-import Strategy.SpotAllocationStrategy.NearestSpotStrategy;
 import Strategy.SpotAllocationStrategy.SpotAllocationStrategy;
 
 public class EntryService {
 
-    private EntryRepository entryRepository;
+    private final EntryRepository entryRepository;
+    private final SpotAllocationStrategy spotAllocationStrategy;
 
-    public EntryService() {
-        this.entryRepository = new EntryRepository();
+    public EntryService(EntryRepository entryRepository, SpotAllocationStrategy spotAllocationStrategy) {
+        this.entryRepository = entryRepository;
+        this.spotAllocationStrategy = spotAllocationStrategy;
     }
 
     public Ticket enterVehicle(Vehicle vehicle, List<ParkingFloor> parkingFloors) {
 
-        SpotAllocationStrategy spotAllocationStrategy = new NearestSpotStrategy(parkingFloors);
         spotAllocationStrategy.allocateSpot(vehicle);
 
         ParkingSpot parkingSpot = spotAllocationStrategy.getParkingSpot();

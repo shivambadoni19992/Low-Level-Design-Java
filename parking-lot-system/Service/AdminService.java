@@ -5,13 +5,13 @@ import Models.ParkingFloor;
 import Models.ParkingSpot;
 
 public class AdminService {
-    private AdminRepository adminRepository;
+    private final AdminRepository adminRepository;
 
-    public AdminService() {
-        this.adminRepository = new AdminRepository();
+    public AdminService(AdminRepository adminRepository) {
+        this.adminRepository = adminRepository;
     }
 
-    public ParkingFloor getParkingFloors() {
+    public ParkingFloor getParkingFloor() {
         return adminRepository.getParkingFloor();
     }
 
