@@ -1,14 +1,16 @@
 package Models;
 
+import Enums.PaymentType;
+
 public class Receipt {
     private String receiptNumber;
     private Ticket ticket;
     private double amount;
-    private String paymentMode;
+    private PaymentType paymentMode;
     private String paymentStatus;
     private String exitTime;
 
-    public Receipt(Ticket ticket, double amount, String paymentMode, String paymentStatus,
+    public Receipt(Ticket ticket, double amount, PaymentType paymentMode, String paymentStatus,
             String exitTime) {
 
         this.ticket = ticket;
@@ -35,7 +37,7 @@ public class Receipt {
         return amount;
     }
 
-    public String getPaymentMode() {
+    public PaymentType getPaymentMode() {
         return paymentMode;
     }
 

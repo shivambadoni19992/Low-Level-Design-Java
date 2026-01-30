@@ -6,6 +6,7 @@ import Strategy.PricingStrtegy.PricingStrategy;
 import Factory.PaymentFactory;
 import Models.Receipt;
 import Models.Ticket;
+import Enums.PaymentType;
 
 public class ExitService {
 
@@ -15,7 +16,7 @@ public class ExitService {
         this.pricingStrategy = pricingStrategy;
     }
 
-    public Receipt exitVehicle(Ticket ticket, String paymentType) {
+    public Receipt exitVehicle(Ticket ticket, PaymentType paymentType) {
         int price = pricingStrategy.calculatePrice(ticket);
         PaymentFactory.getPaymentStrategy(paymentType).pay(price);
         ticket.getParkingSpot().unassignVehicle();

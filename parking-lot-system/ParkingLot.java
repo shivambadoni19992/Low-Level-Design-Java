@@ -1,6 +1,7 @@
 import Controller.AdminController;
 import Controller.EntryController;
 import Controller.ExitController;
+import Enums.PaymentType;
 import Enums.SpotType;
 import Models.ParkingSpot;
 import Models.Receipt;
@@ -39,7 +40,7 @@ public class ParkingLot {
         Ticket ticket = entryController.enterVehicle(new Bike("KA-01-HH-1234"), parkingFloors);
         Ticket ticket2 = entryController.enterVehicle(new Bike("KA-01-HH-1235"), parkingFloors);
 
-        Receipt receipt = exitController.exitVehicle(ticket, "CASH");
+        Receipt receipt = exitController.exitVehicle(ticket, PaymentType.CASH);
 
         Ticket ticket3 = entryController.enterVehicle(new Bike("KA-01-HH-1236"), parkingFloors);
 
@@ -50,9 +51,9 @@ public class ParkingLot {
         System.out.println(ticket3.getTicketNumber());
         System.out.println(ticket4.getTicketNumber());
 
-        Receipt receipt2 = exitController.exitVehicle(ticket2, "UPI");
-        Receipt receipt3 = exitController.exitVehicle(ticket3, "CASH");
-        Receipt receipt4 = exitController.exitVehicle(ticket4, "CASH");
+        Receipt receipt2 = exitController.exitVehicle(ticket2, PaymentType.UPI);
+        Receipt receipt3 = exitController.exitVehicle(ticket3, PaymentType.CASH);
+        Receipt receipt4 = exitController.exitVehicle(ticket4, PaymentType.CASH);
 
         System.out.println(receipt.getReceiptNumber());
         System.out.println(receipt2.getReceiptNumber());
