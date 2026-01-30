@@ -4,7 +4,6 @@ import Service.ExitService;
 import Strategy.PaymentStrategy.PaymentStrategy;
 import Models.Receipt;
 import Models.Ticket;
-import Enums.PaymentType;
 
 public class ExitController {
 
